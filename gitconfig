@@ -1,0 +1,79 @@
+[include]
+  path = ~/.gitconfig_local
+
+[alias]
+  l = log --pretty=oneline --graph --abbrev-commit
+  s = status -s
+  tags = tag -l
+  branches = branch -a
+  remotes = remote -v
+  aliases = config --get-regexp alias
+  sw = switch
+
+[core]
+  excludesfile = ~/.gitignore_global
+  autocrlf = input
+  pager = delta
+
+[interactive]
+  diffFilter = delta --color-only
+
+[init]
+  defaultBranch = main
+
+[branch]
+  sort = -committerdate
+
+[fetch]
+  prune = true
+
+[commit]
+  verbose = true
+
+[push]
+ default = simple
+ autoSetupRemote = true
+ followTags = true
+
+[merge]
+  conflictstyle = zdiff3
+
+[tag]
+  sort = version:refname
+
+[checkout]
+  defaultRemote = origin
+
+[rebase]
+  autoSquash = true
+  autoStash = true
+  updateRefs = true
+
+[help]
+  autocorrect = prompt
+
+[credential]
+  helper = osxkeychain
+
+[delta]
+  navigate = true
+  dark = true
+  side-by-side = true
+  line-numbers = true
+  true-color = always
+
+[column]
+  ui = auto
+
+[color]
+  ui = auto
+
+[color "branch"]
+  current = green reverse
+  local = green
+  remote = yellow
+
+[color "status"]
+  added = yellow
+  changed = green
+  untracked = cyan
