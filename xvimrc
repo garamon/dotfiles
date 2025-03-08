@@ -1,0 +1,11 @@
+set ignorecase
+set smartcase
+set incsearch
+set hlsearch
+
+nnoremap gd :xccmd jumpToDefinition<CR>
+nnoremap <C-o> :xccmd goBackInHistoryByCommand<CR>
+
+nnoremap ,r :xcmenucmd Run<CR>
+
+nnoremap == :xcmenucmd Re-Indent<CR>
