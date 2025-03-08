@@ -2,14 +2,24 @@
 # Ignore case when doing completion.
 set completion-ignore-case on
 
-# ビープ音を無効に
-# Turn off beep.
-set bell-style none
-
 # 複数の補完候補を一覧で表示
 set show-all-if-ambiguous on
+
+# チルダの展開をOFFに
+set expand-tilde off
+
+# 補完候補を全て表示
+set page-completions off
+
+set skip-completed-text on
+
+set match-hidden-files off
 
 # 補完候補がシンボリックリンクの場合、後ろに@を付加
 set mark-symlinked-directories on
 
 set visible-stats on
+
+# ビープ音を無効に
+# Turn off beep.
+set bell-style none
