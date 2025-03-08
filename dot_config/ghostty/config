@@ -1,0 +1,24 @@
+theme = catppuccin-mocha
+font-family = "HackGen Console NF Bold"
+font-feature = -dlig
+font-size = 14
+font-thicken = true
+font-thicken-strength = 1
+
+alpha-blending = linear
+
+cursor-opacity = 0.8
+cursor-style = block
+cursor-style-blink = false
+
+window-padding-x = 10
+window-padding-y = 10
+window-padding-balance = true
+
+background-opacity = 0.9
+#background-blur-radius = 20
+
+term = xterm-256color
+
+macos-titlebar-style = transparent
+macos-window-shadow = false
