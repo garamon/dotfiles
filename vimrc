@@ -4,30 +4,41 @@ if has('vim_starting')
   set encoding=utf8
 endif
 
+if &compatible
+  set nocompatible
+endif
+
 set runtimepath+=~/.cache/dein/repos/github.com/Shougo/dein.vim
-call dein#begin('/Users/noto/.cache/dein')
 
-call dein#add('Shougo/dein.vim')
-call dein#add('tomasr/molokai')
-call dein#add('bling/vim-airline')
-call dein#add('scrooloose/syntastic')
-call dein#add('thinca/vim-quickrun')
-call dein#add('tyru/open-browser.vim')
-call dein#add('vim-jp/vimdoc-ja.git')
-call dein#add('godlygeek/tabular')
-call dein#add('glidenote/memolist.vim')
-call dein#add('scrooloose/nerdcommenter')
-call dein#add('joonty/vdebug')
-call dein#add('vim-scripts/gtags.vim')
-call dein#add('easymotion/vim-easymotion')
+if dein#load_state('~/.cache/dein')
+  call dein#begin('~/.cache/dein')
 
-call dein#end()
+  " Let dein manage dein
+  " Required:
+  call dein#add('~/.cache/dein/repos/github.com/Shougo/dein.vim')
+
+  call dein#add('w0ng/vim-hybrid')
+  call dein#add('bling/vim-airline')
+  call dein#add('scrooloose/syntastic')
+  call dein#add('thinca/vim-quickrun')
+  call dein#add('tyru/open-browser.vim')
+  call dein#add('vim-jp/vimdoc-ja.git')
+  call dein#add('godlygeek/tabular')
+  call dein#add('scrooloose/nerdcommenter')
+  call dein#add('vim-scripts/gtags.vim')
+  call dein#add('easymotion/vim-easymotion')
+
+  " Required:
+  call dein#end()
+  call dein#save_state()
+endif
 
 if dein#check_install()
   call dein#install()
 endif
 
 filetype plugin indent on
+syntax enable
 
 let s:is_gui = has('gui_running')
 
@@ -84,7 +95,9 @@ set list                                      " 不可視文字の表示
 set listchars=tab:▸\ ,eol:¬
 set mouse=a                                   " マウスの有効化
 set guioptions+=a
-set ttymouse=xterm2
+if !has('nvim')
+  set ttymouse=xterm2
+endif
 set helplang=ja                               " helpを日本語優先に
 set shellslash
 
@@ -124,6 +137,7 @@ set incsearch                                 " 検索コマンドを打ち込�
 set ignorecase                                " 検索時に大文字小文字を無視
 set smartcase                                 " 大文字小文字の両方が含まれている場合は大文字小文字を区別
 nnoremap <ESC><ESC> :nohlsearch<CR>           " ハイライト解除
+set inccommand=split
 
 set wildmenu                                  "補完候補を表示する
 set completeopt=menuone                       "補完ウィンドウの設定
@@ -135,8 +149,10 @@ if has('path_extra')
 endif
 
 set t_Co=256
-syntax on
-colorscheme molokai
+syntax enable
+let g:neodark#use_256color = 1
+set background=dark
+colorscheme hybrid
 
 " --------------------------------------------------------------------------
 " key binding: {{{
@@ -211,7 +227,6 @@ nnoremap <leader>rv :source $MYVIMRC<CR>
 " --------------------------------------------------------------------------
 " 全角スペースのハイライト化 {{{
 "
-
 function! ZenkakuSpace()
   highlight ZenkakuSpace cterm=reverse ctermfg=DarkMagenta gui=reverse guifg=DarkMagenta
 endfunction
